@@ -3,11 +3,11 @@
 - [x] chapter02/2360OS_02_01.html
 - [x] chapter02/2360OS_02_02.html
 - [x] chapter02/2360OS_02_03_bindTo.html
-- [ ] chapter03/2360OS_03_01_map.html
-- [ ] chapter03/2360OS_03_02_renderer.html
-- [ ] chapter03/2360OS_03_03_targets.html
-- [ ] chapter03/2360OS_03_04_animations.html
-- [ ] chapter03/2360OS_03_05_multiple.html
+- [x] chapter03/2360OS_03_01_map.html
+- [x] chapter03/2360OS_03_02_renderer.html
+- [x] chapter03/2360OS_03_03_targets.html
+- [x] chapter03/2360OS_03_04_animations.html
+- [x] chapter03/2360OS_03_05_multiple.html
 - [ ] chapter04/2360OS_04_01_changing_layer_properties.html
 - [ ] chapter04/2360OS_04_02_osm_layer_and_mapquest.html
 - [ ] chapter04/2360OS_04_03_stamen.html

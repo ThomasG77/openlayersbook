@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Map Examples</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -18,7 +19,7 @@
         var layer = new ol.layer.Tile({
           source: new ol.source.OSM()
         });
-        var london = ol.proj.transform([-0.12755, 51.507222], 'EPSG:4326', 'EPSG:3857');
+        var london = ol.proj.fromLonLat([-0.12755, 51.507222]);
         var view = new ol.View({
           center: london,
           zoom: 6
