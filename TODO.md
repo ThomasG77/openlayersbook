@@ -1,8 +1,8 @@
 - [x] chapter01/2360OS_01_01_simple_osm.html
 - [x] chapter01/2360OS_01_01_simple_osm_no_comments.html
-- [ ] chapter02/2360OS_02_01.html
-- [ ] chapter02/2360OS_02_02.html
-- [ ] chapter02/2360OS_02_03_bindTo.html
+- [x] chapter02/2360OS_02_01.html
+- [x] chapter02/2360OS_02_02.html
+- [x] chapter02/2360OS_02_03_bindTo.html
 - [ ] chapter03/2360OS_03_01_map.html
 - [ ] chapter03/2360OS_03_02_renderer.html
 - [ ] chapter03/2360OS_03_03_targets.html

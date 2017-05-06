@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Map Examples</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -23,10 +24,22 @@
         layers: [layer],
         view: view
       });
-      // create a DOM Input helper for the checkbox
-      var visible = new ol.dom.Input(document.getElementById('visible'));
-      // and bind its 'checked' property to the layer's 'visible' property
-      visible.bindTo('checked', layer, 'visible');
+
+      var checkbox = document.querySelector('#visible');
+
+      checkbox.addEventListener('change', function() {
+        var checked = this.checked;
+        if (checked !== layer.getVisible()) {
+          layer.setVisible(checked);
+        }
+      });
+
+      layer.on('change:visible', function() {
+        var visible = this.getVisible();
+        if (visible !== checkbox.checked) {
+          checkbox.checked = visible;
+        }
+      });
     </script>
   </body>
 </html>
