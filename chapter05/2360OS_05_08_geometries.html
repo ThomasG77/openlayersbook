@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Geometry Examples</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -11,13 +12,15 @@
     <script src="../assets/ol3/js/ol.js"></script>
     <script>
       var countries = new ol.layer.Vector({
-        source: new ol.source.GeoJSON({
-          projection: 'EPSG:3857',
-          url: '../assets/data/countries.geojson'
+        source: new ol.source.Vector({
+          url: '../assets/data/countries.geojson',
+          format: new ol.format.GeoJSON()
         })
       });
       var view = new ol.View({
-        projection: 'EPSG:3857'
+        projection: 'EPSG:3857',
+        center: [0, 0],
+        zoom: 6
       });
       var map = new ol.Map({
         target: 'map',
@@ -25,10 +28,12 @@
         view: view
       });
 
-      // zoom to the extent of the vector source once the map has been rendered
-      // for the first time
-      map.once('postrender', function() {
-        view.fitExtent(countries.getSource().getExtent(), map.getSize());
+      // zoom to the extent of the vector source once the source has been loaded
+      var key = countries.on('change', function(event) {
+        if (countries.getSource().getState() === 'ready') {
+          view.fit(countries.getSource().getExtent());
+          ol.Observable.unByKey(key);
+        }
       });
 
       // capture mouse move events so we can 'look' at the feature

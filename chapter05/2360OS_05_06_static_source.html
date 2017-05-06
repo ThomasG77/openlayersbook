@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Vector Examples</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -34,9 +35,9 @@
         image: circle
       });
 
-      var geoJSONSource = new ol.source.GeoJSON({
-        projection: 'EPSG:3857',
-        url: '../assets/data/countries.geojson'
+      var geoJSONSource = new ol.source.Vector({
+        url: '../assets/data/countries.geojson',
+        format: new ol.format.GeoJSON()
       });
 
       var vectorLayer = new ol.layer.Vector({
@@ -44,7 +45,7 @@
         style: vectorStyle
       });
 
-      var center = ol.proj.transform([-72.6, 41.7], 'EPSG:4326', 'EPSG:3857');
+      var center = ol.proj.fromLonLat([-72.6, 41.7]);
       var view = new ol.View({
         center: center,
         zoom: 12
@@ -56,11 +57,13 @@
         view: view
       });
 
-      // when the vector layer has been rendered, this means it has
-      // loaded features from its source and the source will know
+      // when the vector source layer has been loaded, we can deduce
       // the extent of the features so we can zoom to it.
-      vectorLayer.once('render', function() {
-        view.fitExtent(geoJSONSource.getExtent(), map.getSize());
+      var key = vectorLayer.on('change', function(event) {
+        if (vectorLayer.getSource().getState() === 'ready') {
+          view.fit(vectorLayer.getSource().getExtent());
+          ol.Observable.unByKey(key);
+        }
       });
 
     </script>

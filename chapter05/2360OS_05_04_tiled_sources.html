@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Vector Examples</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -36,24 +37,26 @@
       });
 
       // this time, we'll load vector tiles from openstreetmap
-      // in the topojson format
-      var tiledSource = new ol.source.TileVector({
+      // mapzen tile in the topojson format
+      // Register at https://mapzen.com/developers/sign_up
+      var mapzenKey = 'your_mapzen_key';
+      var tiledSource = new ol.source.VectorTile({
         format: new ol.format.TopoJSON({
           defaultProjection: 'EPSG:4326'
         }),
         projection: 'EPSG:3857',
-        tileGrid: new ol.tilegrid.XYZ({
+        tileGrid: ol.tilegrid.createXYZ({
           maxZoom: 19
         }),
-        url: 'http://{a-c}.tile.openstreetmap.us/vectiles-water-areas/{z}/{x}/{y}.topojson'
+        url: 'https://tile.mapzen.com/mapzen/vector/v1/roads/{z}/{x}/{y}.topojson?api_key=' + mapzenKey
       });
 
-      var tiledVector = new ol.layer.Vector({
+      var tiledVector = new ol.layer.VectorTile({
         source: tiledSource,
         style: vectorStyle
       });
 
-      var center = ol.proj.transform([-72.6, 41.7], 'EPSG:4326', 'EPSG:3857');
+      var center = ol.proj.fromLonLat([-72.6, 41.7]);
       var view = new ol.View({
         center: center,
         zoom: 12

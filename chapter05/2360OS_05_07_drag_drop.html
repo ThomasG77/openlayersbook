@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Drag 'n' Drop Vector Example</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -59,14 +60,14 @@
           style: vectorStyle
         }));
         var view = map.getView();
-        view.fitExtent(vectorSource.getExtent(), map.getSize());
+        view.fit(vectorSource.getExtent());
       });
       var layer = new ol.layer.Tile({
         source: new ol.source.OSM()
       });
-      var center = ol.proj.transform([0, 0], 'EPSG:4326', 'EPSG:3857');
+
       var view = new ol.View({
-        center: center,
+        center: [0, 0],
         zoom: 1
       });
       var map = new ol.Map({

@@ -15,15 +15,15 @@
 - [x] chapter04/2360OS_04_05_zoomify.html
 - [x] chapter04/2360OS_04_06_various_sources_and_layers.html
 - [x] chapter04/2360OS_04_07_static_image.html
-- [ ] chapter05/2360OS_05_01_vector.html
-- [ ] chapter05/2360OS_05_02_cluster_source.html
-- [ ] chapter05/2360OS_05_03_server_sources.html
-- [ ] chapter05/2360OS_05_04_tiled_sources.html
-- [ ] chapter05/2360OS_05_05_formats.html
-- [ ] chapter05/2360OS_05_06_static_source.html
-- [ ] chapter05/2360OS_05_07_drag_drop.html
-- [ ] chapter05/2360OS_05_08_geometries.html
-- [ ] chapter05/2360OS_05_09_interactive_features.html
+- [x] chapter05/2360OS_05_01_vector.html
+- [x] chapter05/2360OS_05_02_cluster_source.html
+- [x] chapter05/2360OS_05_03_server_sources.html
+- [x] chapter05/2360OS_05_04_tiled_sources.html
+- [x] chapter05/2360OS_05_05_formats.html
+- [x] chapter05/2360OS_05_06_static_source.html
+- [x] chapter05/2360OS_05_07_drag_drop.html
+- [x] chapter05/2360OS_05_08_geometries.html
+- [x] chapter05/2360OS_05_09_interactive_features.html
 - [ ] chapter06/2360OS_06_01_basic_style.html
 - [ ] chapter06/2360OS_06_02_fill_stroke_style.html
 - [ ] chapter06/2360OS_06_03_icon_style.html
