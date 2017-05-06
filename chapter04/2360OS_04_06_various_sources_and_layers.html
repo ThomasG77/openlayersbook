@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Playing with various sources and layers</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -9,11 +10,12 @@
     <div id="map" class="map"></div>
     <script src="../assets/ol3/js/ol.js"></script>
     <script>
+    var bingMapKey = 'your_own_bing_map_key';
 
     var bingMapsAerial = new ol.layer.Tile({
       preload: Infinity,
       source: new ol.source.BingMaps({
-        key: 'Ak-dzM4wZjSqTlzveKz5u0d4IQ4bRzVI309GxmkgSVr1ewS6iPSrOvOKhA-CJlm3',
+        key: bingMapKey,
         imagerySet: 'Aerial'
       })
     });
@@ -23,7 +25,7 @@
     var bingMapsRoad = new ol.layer.Tile({
       preload: Infinity,
       source: new ol.source.BingMaps({
-        key: 'Ak-dzM4wZjSqTlzveKz5u0d4IQ4bRzVI309GxmkgSVr1ewS6iPSrOvOKhA-CJlm3',
+        key: bingMapKey,
         imagerySet: 'Road',
         culture: 'fr-FR'
       })
@@ -31,31 +33,32 @@
 
     bingMapsRoad.set('name', 'Bings Maps Road');
 
-    var mapQuestAerial = new ol.layer.Tile({
-      source: new ol.source.MapQuest({layer: 'sat'})
+    var opentopomap = new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        url: 'http://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+      })
     });
 
-    mapQuestAerial.set('name', 'MapQuest Open Aerial');
+    opentopomap.set('name', 'OpenTopoMap');
 
     var simpleWMS = new ol.layer.Image({
           opacity: 0.6,
       source: new ol.source.ImageWMS({
-        url: 'http://demo.boundlessgeo.com/geoserver/wms',
-        params: {
-          'LAYERS': 'topp:states'
-        },
-        extent: [-13884991, -7455066, 2870341, 6338219]
+        url: 'https://ahocevar.com/geoserver/wms',
+        params: {'LAYERS': 'ne:ne'},
+        serverType: 'geoserver',
+        crossOrigin: 'anonymous'
       })
     });
-    simpleWMS.set('name', 'USA layer from Geoserver WMS demo');
+    simpleWMS.set('name', 'World Maps from Geoserver WMS demo');
 
-    var layers = [bingMapsAerial, bingMapsRoad, mapQuestAerial, simpleWMS];
+    var layers = [bingMapsAerial, bingMapsRoad, opentopomap, simpleWMS];
 
     var map = new ol.Map({
       layers: layers,
       target: 'map',
       view: new ol.View({
-        center: ol.proj.transform([-90, 40], 'EPSG:4326', 'EPSG:3857'),
+        center: ol.proj.fromLonLat([-90, 40]),
         zoom: 3
       })
     });
@@ -73,13 +76,33 @@
       html_element.appendChild(label);
     }
 
+    function addCheckBoxEvent(checkbox, layer) {
+      checkbox.addEventListener('change', function() {
+        var checked = this.checked;
+        if (checked !== layer.getVisible()) {
+          layer.setVisible(checked);
+        }
+      });
+
+      if (layer.getVisible()) {
+        checkbox.checked = layer.getVisible();
+      }
+
+      layer.on('change:visible', function() {
+        var visible = this.getVisible();
+        if (visible !== checkbox.checked) {
+          checkbox.checked = visible;
+        }
+      });
+    }
+
     // Loop from the end to get the top layer in first
     for (var i = layers.length - 1; i >= 0; i--) {
       var id = layers[i].get('id');
       var name = layers[i].get('name');
       generate_checkbox('layer_id_' + i, name, document.body);
-      var visible = new ol.dom.Input(document.getElementById('layer_id_' + i));
-      visible.bindTo('checked', layers[i], 'visible');
+
+      addCheckBoxEvent(document.getElementById('layer_id_' + i), layers[i]);
     }
 
     </script>

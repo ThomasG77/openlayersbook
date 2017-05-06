@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Simple example</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -9,25 +10,29 @@
     <div id="map" class="map"></div>
     <script src="../assets/ol3/js/ol.js"></script>
     <script>
-      var satellite = new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'sat'})
+      var hot = new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          url: 'http://{a-c}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+        })
       });
 
-      var osm = new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'osm'})
+      var opentopomap = new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          url: 'http://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+        })
       });
 
       var map = new ol.Map({
-        layers: [satellite, osm],
+        layers: [hot, opentopomap],
         target: 'map',
         view: new ol.View({
-          center: ol.proj.transform([-74.044683,40.689848], 'EPSG:4326', 'EPSG:3857'),
+          center: ol.proj.fromLonLat([-74.044683,40.689848]),
           zoom: 13
         })
       });
       /*
-      osm.setVisible(false);
-      osm.setVisible(true);
+      opentopomap.setVisible(false);
+      opentopomap.setVisible(true);
       */
     </script>
   </body>

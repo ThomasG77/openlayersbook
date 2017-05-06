@@ -8,13 +8,13 @@
 - [x] chapter03/2360OS_03_03_targets.html
 - [x] chapter03/2360OS_03_04_animations.html
 - [x] chapter03/2360OS_03_05_multiple.html
-- [ ] chapter04/2360OS_04_01_changing_layer_properties.html
-- [ ] chapter04/2360OS_04_02_osm_layer_and_mapquest.html
-- [ ] chapter04/2360OS_04_03_stamen.html
-- [ ] chapter04/2360OS_04_04_bingmaps.html
-- [ ] chapter04/2360OS_04_05_zoomify.html
-- [ ] chapter04/2360OS_04_06_various_sources_and_layers.html
-- [ ] chapter04/2360OS_04_07_static_image.html
+- [x] chapter04/2360OS_04_01_changing_layer_properties.html
+- [x] chapter04/2360OS_04_02_osm_layer_and_mapquest.html
+- [x] chapter04/2360OS_04_03_stamen.html
+- [x] chapter04/2360OS_04_04_bingmaps.html
+- [x] chapter04/2360OS_04_05_zoomify.html
+- [x] chapter04/2360OS_04_06_various_sources_and_layers.html
+- [x] chapter04/2360OS_04_07_static_image.html
 - [ ] chapter05/2360OS_05_01_vector.html
 - [ ] chapter05/2360OS_05_02_cluster_source.html
 - [ ] chapter05/2360OS_05_03_server_sources.html
