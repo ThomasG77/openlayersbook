@@ -3,7 +3,7 @@
  */
 
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var serveIndex = require('serve-index');
 var logger = require('morgan');
 var fs = require('fs');
@@ -21,35 +21,35 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.get('/features.geojson', function(request, response) {
+app.get('/features.geojson', function (request, response) {
   response.contentType('application/json');
-  fs.readFile('assets/data/features.geojson', function(err, data){
+  fs.readFile('assets/data/features.geojson', function (err, data) {
+    if (err) throw err;
     response.send(data.toString());
   });
 });
 
-app.post('/features.geojson', function(req, resp) {
+app.post('/features.geojson', function (req, resp) {
   resp.contentType('application/json');
   var path = './assets/data/features.geojson';
 
-  var json = JSON.stringify(req.body, function(k,v) {
-    if (typeof v == 'string') {
+  var json = JSON.stringify(req.body, function (k, v) {
+    if (typeof v === 'string') {
       var f = parseFloat(v);
       return !isNaN(f) ? f : v;
     }
     return v;
   });
 
-
-  fs.writeFile(path, json, function(err) {
+  fs.writeFile(path, json, function (err) {
     var msgOk = 'The file was saved!';
     var msgFail = 'The file was saved!';
-    if(err) {
-        console.log(err);
-        resp.send(msgFail);
+    if (err) {
+      console.log(err);
+      resp.send(msgFail);
     } else {
-        console.log(msgOk);
-        resp.send(msgOk);
+      console.log(msgOk);
+      resp.send(msgOk);
     }
   });
 });
@@ -59,10 +59,10 @@ app.post('/features.geojson', function(req, resp) {
 app.use(serveIndex(__dirname, {
   icons: true,
   view: 'details',
-  filter: function(path) {
-    var chapter = path.indexOf('chapter') == 0;
-    var sandbox = path.indexOf('sandbox') == 0;
-    var html = path.slice(-5) == '.html';
+  filter: function (path) {
+    var chapter = path.indexOf('chapter') === 0;
+    var sandbox = path.indexOf('sandbox') === 0;
+    var html = path.slice(-5) === '.html';
     return chapter || sandbox || html;
   }
 }));
