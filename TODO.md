@@ -1,5 +1,5 @@
-- [ ] chapter01/2360OS_01_01_simple_osm.html
-- [ ] chapter01/2360OS_01_01_simple_osm_no_comments.html
+- [x] chapter01/2360OS_01_01_simple_osm.html
+- [x] chapter01/2360OS_01_01_simple_osm_no_comments.html
 - [ ] chapter02/2360OS_02_01.html
 - [ ] chapter02/2360OS_02_02.html
 - [ ] chapter02/2360OS_02_03_bindTo.html
