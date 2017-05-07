@@ -24,14 +24,14 @@
 - [x] chapter05/2360OS_05_07_drag_drop.html
 - [x] chapter05/2360OS_05_08_geometries.html
 - [x] chapter05/2360OS_05_09_interactive_features.html
-- [ ] chapter06/2360OS_06_01_basic_style.html
-- [ ] chapter06/2360OS_06_02_fill_stroke_style.html
-- [ ] chapter06/2360OS_06_03_icon_style.html
-- [ ] chapter06/2360OS_06_04_circle_style.html
-- [ ] chapter06/2360OS_06_05_text_style.html
-- [ ] chapter06/2360OS_06_06_style_array.html
-- [ ] chapter06/2360OS_06_07_style_function.html
-- [ ] chapter06/2360OS_06_08_interactive_features.html
+- [x] chapter06/2360OS_06_01_basic_style.html
+- [x] chapter06/2360OS_06_02_fill_stroke_style.html
+- [x] chapter06/2360OS_06_03_icon_style.html
+- [x] chapter06/2360OS_06_04_circle_style.html
+- [x] chapter06/2360OS_06_05_text_style.html
+- [x] chapter06/2360OS_06_06_style_array.html
+- [x] chapter06/2360OS_06_07_style_function.html
+- [x] chapter06/2360OS_06_08_interactive_features.html
 - [ ] chapter07/2360OS_07_01_wms_projection_wgs84.html
 - [ ] chapter07/2360OS_07_02_wms_projection.html
 - [ ] chapter07/2360OS_07_03_wms_no_projection.html

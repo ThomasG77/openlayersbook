@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Vector Style Examples</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -41,33 +42,34 @@
         })
       });
       var countries = new ol.layer.Vector({
-        source: new ol.source.GeoJSON({
-          projection: 'EPSG:3857',
-          url: '../assets/data/countries.geojson'
+        source: new ol.source.Vector({
+          url: '../assets/data/countries.geojson',
+          format: new ol.format.GeoJSON()
         }),
         style: countryStyle
       });
       var timezones = new ol.layer.Vector({
-        source: new ol.source.KML({
-          projection: 'EPSG:3857',
+        source: new ol.source.Vector({
           url: '../assets/data/timezones.kml',
-          extractStyles: false
+          format: new ol.format.KML({
+            extractStyles: false
+          })
         }),
         style: timezoneStyle
       });
 
       var earthquakes = new ol.layer.Vector({
-        source: new ol.source.KML({
-          projection: 'EPSG:3857',
+        source: new ol.source.Vector({
           url: '../assets/data/earthquakes.kml',
-          extractStyles: false
+          format: new ol.format.KML({
+            extractStyles: false
+          })
         }),
         style: earthquakeStyle
       });
 
-      var center = ol.proj.transform([0, 0], 'EPSG:4326', 'EPSG:3857');
       var view = new ol.View({
-        center: center,
+        center: [0, 0],
         zoom: 1
       });
 
@@ -77,8 +79,12 @@
         view: view
       });
 
-      earthquakes.once('render', function() {
-        view.fitExtent(earthquakes.getSource().getExtent(), map.getSize());
+      // zoom to the extent of the vector source once the source has been loaded
+      var key = earthquakes.on('change', function(event) {
+        if (earthquakes.getSource().getState() === 'ready') {
+          view.fit(earthquakes.getSource().getExtent());
+          ol.Observable.unByKey(key);
+        }
       });
     </script>
   </body>

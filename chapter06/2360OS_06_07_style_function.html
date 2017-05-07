@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Vector Style Examples</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -71,18 +72,18 @@
         return [styleCache[level]];
       }
 
-      var source = new ol.source.GeoJSON({
-        projection: 'EPSG:3857',
-        url: '../assets/data/countries.geojson'
+      var source = new ol.source.Vector({
+        url: '../assets/data/countries.geojson',
+        format: new ol.format.GeoJSON()
       });
 
       var countries = new ol.layer.Vector({
         source: source,
         style: styleFunction
       });
-      var center = ol.proj.transform([0, 0], 'EPSG:4326', 'EPSG:3857');
+
       var view = new ol.View({
-        center: center,
+        center: [0, 0],
         zoom: 1
       });
       var map = new ol.Map({
@@ -97,7 +98,7 @@
       // ISO country code that is present in both data sets.
       var key = source.on('change', function(event) {
         if (source.getState() == 'ready') {
-          source.unByKey(key);
+          ol.Observable.unByKey(key);
           $.ajax('../assets/data/income_levels.json').done(function(data) {
             countries.getSource().forEachFeature(function(feature) {
               var code = feature.get('iso_a2');
