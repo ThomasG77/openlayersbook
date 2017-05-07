@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>WMS projection with WGS84</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -9,18 +10,18 @@
     <div id="map" class="map"></div>
     <script src="../assets/ol3/js/ol.js"></script>
     <script>
-		var blueMarbleLayer = new ol.layer.Tile({
+		var naturalEarth = new ol.layer.Tile({
       source: new ol.source.TileWMS({
-        url: 'http://maps.boundlessgeo.com/geowebcache/service/wms',
+        url: 'https://ahocevar.com/geoserver/wms',
         params: {
           'TILED' : true,
           'VERSION': '1.1.1',
-          'LAYERS': 'bluemarble',
+          'LAYERS': 'ne:ne',
           'FORMAT': 'image/jpeg'
         }
       })
     });
-    
+
 		var view = new ol.View({
       projection: 'EPSG:4326',
       center: [-1.81185, 52.443141],
@@ -31,7 +32,7 @@
       target: 'map'
     });
 
-    map.addLayer(blueMarbleLayer);
+    map.addLayer(naturalEarth);
 
     map.setView(view);
 

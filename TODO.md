@@ -32,10 +32,10 @@
 - [x] chapter06/2360OS_06_06_style_array.html
 - [x] chapter06/2360OS_06_07_style_function.html
 - [x] chapter06/2360OS_06_08_interactive_features.html
-- [ ] chapter07/2360OS_07_01_wms_projection_wgs84.html
-- [ ] chapter07/2360OS_07_02_wms_projection.html
-- [ ] chapter07/2360OS_07_03_wms_no_projection.html
-- [ ] chapter07/2360OS_07_04_wfs_reprojection.html
+- [x] chapter07/2360OS_07_01_wms_projection_wgs84.html
+- [x] chapter07/2360OS_07_02_wms_projection.html
+- [x] chapter07/2360OS_07_03_wms_no_projection.html
+- [x] chapter07/2360OS_07_04_wfs_reprojection.html
 - [ ] chapter08/2360OS_08_01_simple_select.html
 - [ ] chapter08/2360OS_08_02_select_options.html
 - [ ] chapter08/2360OS_08_03_foreachfeatureatpixel.html
