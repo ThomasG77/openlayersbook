@@ -36,17 +36,17 @@
 - [x] chapter07/2360OS_07_02_wms_projection.html
 - [x] chapter07/2360OS_07_03_wms_no_projection.html
 - [x] chapter07/2360OS_07_04_wfs_reprojection.html
-- [ ] chapter08/2360OS_08_01_simple_select.html
-- [ ] chapter08/2360OS_08_02_select_options.html
-- [ ] chapter08/2360OS_08_03_foreachfeatureatpixel.html
-- [ ] chapter08/2360OS_08_04_getgetfeatureinfourl.html
-- [ ] chapter08/2360OS_08_05_simple_overlay.html
-- [ ] chapter08/2360OS_08_06_layer_overlay.html
-- [ ] chapter08/2360OS_08_07_create_new_content.html
-- [ ] chapter08/2360OS_08_08_modify.html
-- [ ] chapter08/2360OS_08_09_configuring_default_interactions.html
-- [ ] chapter08/2360OS_08_10_drag_rotate_zoom.html
-- [ ] chapter08/2360OS_08_11_dragbox.html
+- [x] chapter08/2360OS_08_01_simple_select.html
+- [x] chapter08/2360OS_08_02_select_options.html
+- [x] chapter08/2360OS_08_03_foreachfeatureatpixel.html
+- [x] chapter08/2360OS_08_04_getgetfeatureinfourl.html
+- [x] chapter08/2360OS_08_05_simple_overlay.html
+- [x] chapter08/2360OS_08_06_layer_overlay.html
+- [x] chapter08/2360OS_08_07_create_new_content.html
+- [x] chapter08/2360OS_08_08_modify.html
+- [x] chapter08/2360OS_08_09_configuring_default_interactions.html
+- [x] chapter08/2360OS_08_10_drag_rotate_zoom.html
+- [x] chapter08/2360OS_08_11_dragbox.html
 - [ ] chapter09/2360OS_09_01_default_controls.html
 - [ ] chapter09/2360OS_09_02_default_attribution_style.html
 - [ ] chapter09/2360OS_09_03_mouse_position.html

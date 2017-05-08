@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Get Features from vector</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -12,7 +13,7 @@
     <script>
 
       var raster = new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'sat'})
+        source: new ol.source.OSM()
       });
 
       var selectEuropa = new ol.style.Style({
@@ -31,9 +32,9 @@
 
       var vectorEuropa = new ol.layer.Vector({
         id: 'europa',
-        source: new ol.source.GeoJSON({
-          projection: 'EPSG:3857',
-          url: '../assets/data/nutsv9_lea.geojson'
+        source: new ol.source.Vector({
+          url: '../assets/data/nutsv9_lea.geojson',
+          format: new ol.format.GeoJSON()
         }),
         style: defaultEuropa
       });
@@ -45,7 +46,7 @@
         style: [selectEuropa]
       });
 
-      var london = ol.proj.transform([-0.12755, 51.507222], 'EPSG:4326', 'EPSG:3857');
+      var london = ol.proj.fromLonLat([-0.12755, 51.507222]);
 
       var view = new ol.View({
         center: london,

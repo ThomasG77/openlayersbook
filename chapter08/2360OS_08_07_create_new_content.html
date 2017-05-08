@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Create new content</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -21,11 +22,12 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
       var raster = new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'sat'})
+        source: new ol.source.OSM()
       });
 
-      var source = new ol.source.GeoJSON({
-          url: '/features.geojson'
+      var source = new ol.source.Vector({
+        url: '/features.geojson',
+        format: new ol.format.GeoJSON()
       });
 
       var vector = new ol.layer.Vector({
@@ -71,14 +73,24 @@
           function(evt) {
             console.log(evt.feature);
             var parser = new ol.format.GeoJSON();
-            var features = source.getFeatures();
-            var featuresGeoJSON = parser.writeFeatures(features);
-            $.ajax({
-                url: '/features.geojson',
-                type: 'POST',
-                data: featuresGeoJSON
-            }).then(function(response) {
-                console.log(response);
+            var key = source.on('change', function(event)  {
+              if (this.getState() == 'ready') {
+                var features = source.getFeatures();
+                var featuresGeoJSON = parser.writeFeatures(features, {
+                  dataProjection: 'EPSG:4326',
+                  featureProjection: 'EPSG:3857'
+                });
+                $.ajax({
+                    url: '/features.geojson',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: featuresGeoJSON,
+                    dataType: 'json'
+                }).then(function(response) {
+                    console.log(response);
+                });
+                ol.Observable.unByKey(key);
+              }
             });
           },
         this);

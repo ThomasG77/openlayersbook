@@ -17,9 +17,6 @@ app.use(logger('dev'));
 
 // Declare for parsing requests
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 
 app.get('/features.geojson', function (request, response) {
   response.contentType('application/json');
@@ -33,14 +30,7 @@ app.post('/features.geojson', function (req, resp) {
   resp.contentType('application/json');
   var path = './assets/data/features.geojson';
 
-  var json = JSON.stringify(req.body, function (k, v) {
-    if (typeof v === 'string') {
-      var f = parseFloat(v);
-      return !isNaN(f) ? f : v;
-    }
-    return v;
-  });
-
+  var json = JSON.stringify(req.body);
   fs.writeFile(path, json, function (err) {
     var msgOk = 'The file was saved!';
     var msgFail = 'The file was saved!';
