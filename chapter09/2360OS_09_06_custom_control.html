@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Custom control</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -48,7 +49,7 @@
           var format = new ol.format.GeoJSON();
           var features = source.getFeatures();
           var featuresGeoJSON = format.writeFeatures(features);
-          download('export.geojson', JSON.stringify(featuresGeoJSON));
+          download('export.geojson', featuresGeoJSON);
         };
 
         anchor.addEventListener('click', getGeoJSON, false);
@@ -67,11 +68,12 @@
       ol.inherits(app.generateGeoJSONControl, ol.control.Control);
 
       var raster = new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'sat'})
+        source: new ol.source.OSM()
       });
 
-      var source = new ol.source.GeoJSON({
-          url: '/features.geojson'
+      var source = new ol.source.Vector({
+          url: '/features.geojson',
+          format: new ol.format.GeoJSON()
       });
 
       var vector = new ol.layer.Vector({

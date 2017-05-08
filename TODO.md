@@ -47,12 +47,12 @@
 - [x] chapter08/2360OS_08_09_configuring_default_interactions.html
 - [x] chapter08/2360OS_08_10_drag_rotate_zoom.html
 - [x] chapter08/2360OS_08_11_dragbox.html
-- [ ] chapter09/2360OS_09_01_default_controls.html
-- [ ] chapter09/2360OS_09_02_default_attribution_style.html
-- [ ] chapter09/2360OS_09_03_mouse_position.html
-- [ ] chapter09/2360OS_09_04_scaleline.html
-- [ ] chapter09/2360OS_09_05_zoomtoextent.html
-- [ ] chapter09/2360OS_09_06_custom_control.html
+- [x] chapter09/2360OS_09_01_default_controls.html
+- [x] chapter09/2360OS_09_02_default_attribution_style.html
+- [x] chapter09/2360OS_09_03_mouse_position.html
+- [x] chapter09/2360OS_09_04_scaleline.html
+- [x] chapter09/2360OS_09_05_zoomtoextent.html
+- [x] chapter09/2360OS_09_06_custom_control.html
 - [ ] chapter10/2360OS_10_01_mobile.html
 - [ ] chapter10/2360OS_10_02_geolocation.html
 - [ ] chapter10/2360OS_10_03_orientation.html

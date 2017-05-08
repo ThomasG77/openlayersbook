@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Simple example</title>
     <link rel="stylesheet" href="../assets/ol3/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/samples.css" type="text/css" />
@@ -21,7 +22,7 @@
         layers: [osm_default],
         target: 'map',
         view: new ol.View({
-          center: ol.proj.transform([-83.43924243777822, 60.16139104246781], 'EPSG:4326', 'EPSG:3857'),
+          center: ol.proj.fromLonLat([-83.43924243777822, 60.16139104246781]),
           zoom: 3
         })
       });
